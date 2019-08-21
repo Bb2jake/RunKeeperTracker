@@ -1,0 +1,18 @@
+<div>
+	<input type="date" (change)="populateChart()" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = getDate($event)">
+	<input type="date" (change)="populateChart()" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = getDate($event)">
+</div>
+<div>
+	<span *ngFor="let d of objectKeys(toggleData)">
+		<span>{{d}}</span>
+		<input class="checkbox" (change)="populateChart()" [(ngModel)]="toggleData[d]" type="checkbox">
+	</span>
+</div>
+<div class="flex">
+	<div class="flex-item">
+		<div style="display: block;">
+			<canvas baseChart width="400" height="300" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="true"
+				chartType="line"></canvas>
+		</div>
+	</div>
+</div>
